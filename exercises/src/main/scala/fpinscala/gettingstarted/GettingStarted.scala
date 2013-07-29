@@ -140,6 +140,7 @@ object PolymorphicFunctions {
   }
 
   def main(args: Array[String]) {
+    // isSorted test
     val sorted = Array(7, 4, 3, 2, 1)
     val notSorted = Array(7, 4, 3, 1, 2)
 
@@ -147,6 +148,12 @@ object PolymorphicFunctions {
 
     println(s"${sorted.toSeq} is sorted: ${isSorted(sorted, gt)}")
     println(s"${notSorted.toSeq} is sorted: ${isSorted(notSorted, gt)}")
+
+    // partial1 test
+    def add(a: Int, b: Int) = a + b
+
+    val add2 = partial1(2, add)
+    println(s"2 + 2 = ${add2(2)}")
   }
 
 
