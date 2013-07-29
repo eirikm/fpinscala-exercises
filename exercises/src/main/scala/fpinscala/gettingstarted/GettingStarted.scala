@@ -158,6 +158,9 @@ object PolymorphicFunctions {
     // curry test
     val curriedAdd = curry(add)
     println(s"3 + 3 = ${curriedAdd(3)(3)}")
+
+    // uncurried test
+    println(s"4 + 4 = ${uncurry(curriedAdd)(4,4)}")
   }
 
 
@@ -195,7 +198,7 @@ object PolymorphicFunctions {
 
   // Exercise 5: Implement `uncurry`
   def uncurry[A,B,C](f: A => B => C): (A, B) => C =
-    ??? 
+    (a, b) => f(a)(b)
 
   /*
   NB: There is a method on the `Function` object in the standard library,
