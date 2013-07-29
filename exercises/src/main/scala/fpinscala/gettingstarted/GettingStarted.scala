@@ -161,6 +161,10 @@ object PolymorphicFunctions {
 
     // uncurried test
     println(s"4 + 4 = ${uncurry(curriedAdd)(4,4)}")
+
+    // compose test
+    def mult2(a: Int) = a * 2
+    println(s"(5 + 2) * 2 = ${compose(mult2, add2)(5)}")
   }
 
 
@@ -213,5 +217,5 @@ object PolymorphicFunctions {
   // Exercise 6: Implement `compose`
 
   def compose[A,B,C](f: B => C, g: A => B): A => C =
-    ??? 
+    (a: A) => f(g(a))
 }
