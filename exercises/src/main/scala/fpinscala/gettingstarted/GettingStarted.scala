@@ -154,6 +154,10 @@ object PolymorphicFunctions {
 
     val add2 = partial1(2, add)
     println(s"2 + 2 = ${add2(2)}")
+
+    // curry test
+    val curriedAdd = curry(add)
+    println(s"3 + 3 = ${curriedAdd(3)(3)}")
   }
 
 
