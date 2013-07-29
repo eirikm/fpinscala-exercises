@@ -139,10 +139,23 @@ object PolymorphicFunctions {
     go(0, 0, as.length - 1)
   }
 
+  def main(args: Array[String]) {
+    val sorted = Array(1,2,3,4,7)
+    val notSorted = Array(1,2,3,5,4)
+
+    def gt(a: Int, b: Int): Boolean = a > b
+
+    println(s"${sorted.toSeq} is sorted: ${isSorted(sorted, gt)}")
+    println(s"${notSorted.toSeq} is sorted: ${isSorted(notSorted, gt)}")
+  }
+
+
   // Exercise 2: Implement a polymorphic function to check whether 
   // an `Array[A]` is sorted
-  def isSorted[A](as: Array[A], gt: (A,A) => Boolean): Boolean = ??? 
-  
+  def isSorted[A](as: Array[A], gt: (A,A) => Boolean): Boolean =
+    if (as.size < 2) true
+    else gt(as(0), as(1)) && isSorted(as.tail, gt)
+
   // Polymorphic functions are often so constrained by their type
   // that they only have one implementation! Here's an example:
 
